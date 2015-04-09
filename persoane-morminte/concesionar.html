@@ -1,0 +1,58 @@
+<!DOCTYPE>
+<?php echo($_SESSION['userId']);  ?>
+<html>
+<head>
+<title>Formular Contract de concesiune</title>
+</head>
+
+<body>
+<div class="header">
+<h2>Contract de concesiune</h2>
+</div>
+
+<div class="menu">
+<ul class="meniu">
+	<li><a href="contract.html">Contracte si concesionari</a></li>
+</ul>	
+</div>
+
+<div class="body">
+<form method="POST" action="add_concesionar.php" name="formular">
+<label class="eticheta">Concesionar:</label><br></br>
+
+<label class="eticheta">Nume</label>
+<input class="input" type="text" name="nume1" required><br></br>
+
+<label class="eticheta">Prenume</label>
+<input class="input" type="text" name="prenume1" required><br></br>
+
+<label class="eticheta">CNP</label>
+<input class="input" type="number" name="cnp1" onchange="validare_cnp(this.value)" required><br></br>
+
+<label class="eticheta">Domiciliul</label>
+<input class="input" type="text" name="domiciliu1" required><br></br>
+
+<label class="eticheta">Concesionar:</label><br></br>
+
+<label class="eticheta">Nume</label>
+<input class="input" type="text" name="nume2" required><br></br>
+
+<label class="eticheta">Prenume</label>
+<input class="input" type="text" name="prenume2"required><br></br>
+
+<label class="eticheta">CNP</label>
+<input class="input" type="number" name="cnp2" onchange="validare_cnp(this.value)" required><br></br>
+
+<label class="eticheta">Domiciliul</label>
+<input class="input" type="text" name="domiciliu2" required><br></br>
+
+
+<script src="validare+cautare.js"></script>
+<input type="submit" value="Submit">
+
+
+</form>
+</div>
+</body>
+
+</html>

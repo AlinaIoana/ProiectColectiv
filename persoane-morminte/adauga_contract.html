@@ -1,0 +1,70 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Formular Contract de concesiune</title>
+</head>
+
+<body>
+<div class="header">
+<h2>Contract de concesiune</h2>
+</div>
+
+<div class="menu">
+<ul class="meniu">
+	<li><a href="contract.html">Contracte si concesionari</a></li>
+</ul>	
+</div>
+
+<div class="body">
+<form method="POST" action="add_contract.php" name="formular">
+<label class="eticheta">Concesionari:</label><br></br>
+
+
+<label class="eticheta">CNP</label>
+<input class="input" type="number" name="cnp1" onchange="validare_cnp(this.value)" required><br></br>
+
+<label class="eticheta">CNP</label>
+<input class="input" type="number" name="cnp2" onchange="validare_cnp(this.value)" required><br></br>
+
+
+
+<label class="eticheta">Cimitir</label>
+<select id="cimitir" onchange="afisare_parcele(this.value)" name="cimitir">
+	<option></option>
+	<option>Cimitirul Central</option>
+	<option>Cimitirul Manastur</option>
+	<option>Cimitirul Militar</option>
+</select>	
+<br></br>
+<label>Parcela</label>
+<div id="rez">
+
+</div>
+<br></br>
+<label>Numarul</label>
+<div id="rez2">
+
+</div>
+<br></br>
+
+<label class="eticheta">Numarul contractului</label>
+<input class="input" type="number" name="numar_contract" onchange="validare_nr_contract(this.value)" required><br></br>
+<div id="rez4"> </div><br></br>
+
+<label class="eticheta">Numarul chitantei</label>
+<input class="input" type="number" name="numar_chitanta" onchange="validare_chitanta(this.value)" required><br></br>
+<div id="rez5"> </div> <br></br>
+
+<label class="eticheta">Id cerere</label>
+<input class="input" type="number" name="id_cerere" required><br></br>
+
+
+<script src="validare+cautare.js"></script>
+<input type="submit" value="Submit">
+
+
+</form>
+</div>
+</body>
+
+</html>
