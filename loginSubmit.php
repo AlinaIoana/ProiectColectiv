@@ -54,10 +54,12 @@ if (!isset($_POST['userName'], $_POST['password'])) {
 <body>
 <?php if(isset($_SESSION['userId'])) { ?>
 	<h2>Logout Here</h2>
-		<p><a href="Logout.php">Log Out Link</p>
-		<p><a href="persoane-morminte/contract.html">Mergi la pagina Concesionar</p>	
-		<p><a href="persoane-morminte/decedati.html">Mergi la pagina Decedati</p>
-		<p><a href="registre/registre.html">Mergi la pagina Registre</p>
+	<ul>
+		<li><p><a href="Logout.php">Log Out Link</p></li>
+		<li><p><a href="persoane-morminte/contract.html">Mergi la pagina Concesionar</p></li>	
+		<li><p><a href="persoane-morminte/decedati.html">Mergi la pagina Decedati</p></li>
+		<li><p><a href="registre/registre.html">Mergi la pagina Registre</p></li>
+	</ul>
 		
 <?php } else { ?>
 	<p><?php echo $message; ?></p>
