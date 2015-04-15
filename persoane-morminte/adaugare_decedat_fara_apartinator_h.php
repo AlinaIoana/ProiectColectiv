@@ -35,8 +35,12 @@ if (!$conn) {
 </div>
 
 <div class="menu">
-	<a href="decedati.html">Decedati</a>
-	<a href="../logout.php">Delogare</a>
+
+<ul>
+	<li><a href="decedati.html">Decedati</a></li>
+	<li><a href="../logout.php">Delogare</a></li>
+</ul>
+
 </div>
 
 <div class="body">

@@ -59,8 +59,10 @@ if( mysqli_num_rows($id_cimitir_parcela) != 1){
 <body>
 <div class="header">  </div>
 <div class="menu">
-	<a href="adaugare_decedat_fara_apartinator_h.php">Inapoi</a>
-	<a href="../logout.php">Delogare</a>
+<ul>
+	<li><a href="adaugare_decedat_fara_apartinator_h.php">Inapoi</a></li>
+	<li><a href="../logout.php">Delogare</a></li>
+</ul>
 </div>
 <div class="body">
 
