@@ -9,14 +9,30 @@
 <div class="header"> <h2> Registru de evidenţă a cererilor de înhumare</h2></div>
 <div class="menu"> 
 <!-- aici vin legaturile cu celelalte pagini -->
-<a href="../loginSubmit.php">Inapoi</a>
-<a href="../logout.php">Delogare</a>
-
-<br>
-</br>
+<ul>
+	<li><a href="../loginSubmit.php">Inapoi</a></li>
+	<li><a href="../logout.php">Delogare</a></li>
+</ul>
 <p><a href="registre.html"><button>Mergi la Registre </button></a></p>
 </div>
 <div class="body">
+
+<form action="search.php" method="POST">
+	<p>Căutare după nume</p>
+	<input type="text" name="searchterm" placeholder="Căutare după nume..."></br>
+	<input type="submit" name="Submit" value="Caută" />
+	</br>
+	</form>
+	
+	<form action="search2.php" method="POST">
+	<p>Căutare după dată</p>
+	<input type="date" name="searchterm" placeholder="Căutare după dată..."></br>
+	<input type="submit" name="Submit" value="Caută" />
+	</br>
+	</form>
+
+
+<p> <a href="cereri_rezolvate.php"><button>Afişează cereri rezolvate</button></a></p>
 
 <?php
 
@@ -61,24 +77,6 @@ mysqli_close($con);
 
 ?>
 
-
-
-<form action="search.php" method="POST">
-	<p>Căutare după nume</p>
-	<input type="text" name="searchterm" placeholder="Căutare după nume..."></br>
-	<input type="submit" name="Submit" value="Caută" />
-	</br>
-	</form>
-	
-	<form action="search2.php" method="POST">
-	<p>Căutare după dată</p>
-	<input type="date" name="searchterm" placeholder="Căutare după dată..."></br>
-	<input type="submit" name="Submit" value="Caută" />
-	</br>
-	</form>
-<!-- aici vine tot restul de cod -->
-
-<p> <a href="http://localhost/proiect/registre/cereri_rezolvate.php"><button>Afişează cereri rezolvate</button></a></p>
 </div>
 
 

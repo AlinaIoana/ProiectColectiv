@@ -5,6 +5,7 @@
 </head>
 
 <body>
+<p> <a href="Registru_cereri.php">Înapoi la Registru cereri</a></p>
 <?php
 
 $con = mysqli_connect("localhost","root","");

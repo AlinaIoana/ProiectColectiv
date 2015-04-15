@@ -8,8 +8,10 @@
 <div class="header"> <h2> Registru de evidenţă a cererilor de înhumare</h2></div>
 <div class="menu"> 
 <!-- aici vin legaturile cu celelalte pagini -->
-<a href="../loginSubmit.php">Inapoi</a>
-<a href="../logout.php">Delogare</a>
+<ul>
+	<li><a href="../loginSubmit.php">Inapoi</a></li>
+	<li><a href="../logout.php">Delogare</a></li>
+</ul>
 <br>
 </br>
 </div>
