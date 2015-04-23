@@ -55,10 +55,12 @@
 <input class="input" type="number" name="numar_chitanta" onchange="validare_chitanta(this.value)" required><br></br>
 <div id="rez5"> </div> <br></br>
 
-<label class="eticheta">Id cerere</label>
-<input class="input" type="number" name="id_cerere" required><br></br>
+<label class="eticheta">Cnp-ul persoanei care a facut cererea</label>
+<input class="input" type="number" name="cnp" oninput="get_id_cerere(this.value)" required><br></br>
+<label>Id-ul cererii</label>
+<div id="rez6"> </div> <br></br>
 
-
+<div id="rez7"></div><br></br>
 <script src="validare+cautare.js"></script>
 <input type="submit" value="Submit">
 

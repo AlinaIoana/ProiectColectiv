@@ -11,14 +11,14 @@ $database="proiect";
 $conn=mysqli_connect($hostname,$username,$password,$database);
 if (!$conn) 
 {
-    die('Nu ma pot conecta la MySQL !!! : ' . mysql_error());
+    die('Nu ma pot conecta la MySQL !!! : ' . mysqli_error());
 }
 
-/*$sel=mysql_select_db($database);
+$sel=mysqli_select_db($conn,$database);
 if (!$sel) 
 {
 	die ("Nu gasesc baza de date !!!");
-}*/
+}
 $query="select id_cimitir from cimitir where nume_cimitir='$nume' and parcela='$parcela' ";
 $rezult=mysqli_query($conn, $query);
 $row=mysqli_fetch_array($rezult);
@@ -35,5 +35,5 @@ while($row1=mysqli_fetch_array($rezult1))
 echo "<option>".$row1['numar']."</option>";
 }
 echo "</select>";
-//mysql_close($conn);
+mysqli_close($conn);
 ?>

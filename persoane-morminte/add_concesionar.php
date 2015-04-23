@@ -12,20 +12,20 @@ $username="root";
 $password="";
 $database="proiect";
 
-$conn=mysql_connect($hostname,$username,$password,$database);
+$conn=mysqli_connect($hostname,$username,$password,$database);
 if (!$conn) 
 {
-    die('Nu ma pot conecta la MySQL !!! : ' . mysql_error());
+    die('Nu ma pot conecta la MySQL !!! : ' . mysqli_error());
 }
 
-$sel=mysql_select_db($database);
+$sel=mysqli_select_db($conn,$database);
 if (!$sel) 
 {
 	die ("Nu gasesc baza de date !!!");
 }
 $ok=0;
 $query="insert into concesionar values ('','$nume1','$prenume1','$cnp1','$domiciliu1')";
-$rezult=mysql_query($query);
+$rezult=mysqli_query($conn,$query);
 if($rezult==0)
 	$ok=1;
 ?>

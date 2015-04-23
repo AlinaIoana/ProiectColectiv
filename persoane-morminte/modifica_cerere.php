@@ -1,6 +1,6 @@
 <?php
 
-$numar=$_GET['nr_chitanta'];
+$id_cerere=$_GET['id_cerere'];
 
 $hostname="localhost";
 $username="root";
@@ -18,21 +18,14 @@ if (!$sel)
 {
 	die ("Nu gasesc baza de date !!!");
 }
-$ok=0;
-$query="select nr_chitanta from contract";
-$rezult=mysqli_query($conn,$query);
-
-while($row=mysqli_fetch_array($rezult))
-{	
-	if($numar==$row['nr_chitanta'])
-	{
-		$ok=1;
-	}
+$query="update cerere set stadiu_solutionare='Solutionata' where id_cerere='$id_cerere'";
+if (mysqli_query($conn, $query)) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . mysqli_error($conn);
 }
-if($ok==0)
-	echo "Numar chitanta valid!";
-	else
-	echo "Numar chitanta invalid!Deja exista in baza de date.";
-	
+
+
+
 mysqli_close($conn);
 ?>

@@ -18,44 +18,45 @@ $username="root";
 $password="";
 $database="proiect";
 
-$conn=mysql_connect($hostname,$username,$password,$database);
+$conn=mysqli_connect($hostname,$username,$password,$database);
 if (!$conn) 
 {
-    die('Nu ma pot conecta la MySQL !!! : ' . mysql_error());
+    die('Nu ma pot conecta la MySQL !!! : ' . mysqli_error());
 }
 
-$sel=mysql_select_db($database);
+$sel=mysqli_select_db($conn,$database);
 if (!$sel) 
 {
 	die ("Nu gasesc baza de date !!!");
 }
 
 $query="select id_concesionar from concesionar where cnp='$cnp1' or cnp='$cnp2'";
-$rezult=mysql_query($query);
-$row=mysql_fetch_array($rezult);
+$rezult=mysqli_query($conn,$query);
+$row=mysqli_fetch_array($rezult);
 $id_concesionar1=$row['id_concesionar'];
-$row=mysql_fetch_array($rezult);
+$row=mysqli_fetch_array($rezult);
 $id_concesionar2=$row['id_concesionar'];
 
 $query3="select id_cimitir from cimitir where nume_cimitir='$cimitir' and parcela='$parcela'";
-$rezult3=mysql_query($query3);
-$row=mysql_fetch_array($rezult3);
+$rezult3=mysqli_query($conn,$query3);
+$row=mysqli_fetch_array($rezult3);
 $id_cimitir=$row['id_cimitir'];
 
 
 $query4="select id_mormant from mormant where id_cimitir='$id_cimitir' and numar='$nr_mormant'";
-$rezult4=mysql_query($query4);
-$row=mysql_fetch_array($rezult4);
+$rezult4=mysqli_query($conn,$query4);
+$row=mysqli_fetch_array($rezult4);
 $id_mormant=$row['id_mormant'];
 
+$data=date("Y-m-d");
 $ok=0;
-$query5="insert into contract values ('$id_concesionar1','$id_mormant','$nr_contract','$nr_chitanta','$cerere')";
-$rezult5=mysql_query($query5);
+$query5="insert into contract values ('$id_concesionar1','$id_mormant','$nr_contract','$nr_chitanta','$cerere','$data')";
+$rezult5=mysqli_query($conn,$query5);
 if($rezult5==0)
 	$ok=1;
 
-$query6="insert into contract values ('$id_concesionar2','$id_mormant','$nr_contract','$nr_chitanta','$cerere')";
-$rezult6=mysql_query($query6);
+$query6="insert into contract values ('$id_concesionar2','$id_mormant','$nr_contract','$nr_chitanta','$cerere','$data')";
+$rezult6=mysqli_query($conn,$query6);
 if($rezult6==0)
 	$ok=1;
 
@@ -78,7 +79,8 @@ if($rezult6==0)
 if($ok==0)
 	echo "Contract adaugat cu succes";
 	else
-	echo "Eroare la introducerea concesionarului";
+	echo "Eroare la introducerea contrectului";
+		
 ?>	
 
 </div>

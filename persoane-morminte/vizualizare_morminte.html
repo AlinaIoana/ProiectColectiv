@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Vizualizare morminte</title>
+</head>
+
+<body>
+<div class="header">
+<h2>Vizualizarea mormintelor fiecarui concesionar</h2>
+</div>
+
+<div class="menu">
+<ul class="meniu">
+	<li><a href="contract.html">Contracte si concesionari</a></li>
+</ul>	
+</div>
+
+<div class="body">
+<form>
+<label class="eticheta">Concesionar:</label><br></br>
+
+
+<label class="eticheta">Nume concesionar</label>
+<input class="input" type="text" id="nume" oninput="morminte_dupa_nume(this.value)" ><br></br>
+
+<label class="eticheta">Prenume concesionar</label>
+<input class="input" type="text" id="prenume" oninput="get_morminte(this.value)" ><br></br>
+
+
+<div id="rez10"></div><br></br>
+<script src="validare+cautare.js"></script>
+
+
+
+</form>
+</div>
+</body>
+
+</html>

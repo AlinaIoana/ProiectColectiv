@@ -7,22 +7,22 @@ $username="root";
 $password="";
 $database="proiect";
 
-$conn=mysql_connect($hostname,$username,$password,$database);
+$conn=mysqli_connect($hostname,$username,$password,$database);
 if (!$conn) 
 {
-    die('Nu ma pot conecta la MySQL !!! : ' . mysql_error());
+    die('Nu ma pot conecta la MySQL !!! : ' . mysqli_error());
 }
 
-$sel=mysql_select_db($database);
+$sel=mysqli_select_db($conn,$database);
 if (!$sel) 
 {
 	die ("Nu gasesc baza de date !!!");
-}
+} 
 $ok=0;
 $query="select nr_contract from contract";
-$rezult=mysql_query($query);
+$rezult=mysqli_query($conn,$query);
 
-while($row=mysql_fetch_array($rezult))
+while($row=mysqli_fetch_array($rezult))
 {	
 	if($numar==$row['nr_contract'])
 	{
@@ -34,5 +34,5 @@ if($ok==0)
 	else
 	echo "Numar contract invalid!Deja exista in baza de date.";
 	
-mysql_close($conn);
+mysqli_close($conn);
 ?>

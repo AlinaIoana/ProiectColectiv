@@ -1,6 +1,6 @@
 <?php
 
-$nume=$_GET['denumire'];
+$cnp=$_GET['cnp'];
 
 $hostname="localhost";
 $username="root";
@@ -18,14 +18,14 @@ if (!$sel)
 {
 	die ("Nu gasesc baza de date !!!");
 }
-$query="select parcela from cimitir where nume_cimitir='$nume'";
+$query="select id_cerere from cerere where cnp='$cnp' and stadiu_solutionare='In asteptare'";
 $rezult=mysqli_query($conn, $query);
 
-echo "<select id='parcela' onchange='afisare_numar(this.value)' name='parcela' required>";
+echo "<select id='id_cerere' onchange='modifica_stadiul_cererii(this.value)' name='id_cerere' required>";
 echo "<option></option>";
 while($row=mysqli_fetch_array($rezult))
 {
-echo "<option>".$row['parcela']."</option>";
+echo "<option>".$row['id_cerere']."</option>";
 }
 echo "</select>";
 mysqli_close($conn);

@@ -17,7 +17,7 @@
 
 <div class="body">
 <form method="POST" action="add_concesionar.php" name="formular">
-<label class="eticheta">Concesionar:</label><br></br>
+<label class="eticheta">Adaugare Concesionar:</label><br></br>
 
 <label class="eticheta">Nume</label>
 <input class="input" type="text" name="nume1" required><br></br>
@@ -35,6 +35,25 @@
 
 <script src="validare+cautare.js"></script>
 <input type="submit" value="Submit">
+
+
+</form>
+
+<form  name="formular2">
+<label class="eticheta">Modificare concesionar:</label><br></br>
+
+<label class="eticheta">CNP</label>
+<input class="input" type="number" id="cnp" onchange="get_concesionar(this.value)" required><br></br>
+
+<label class="eticheta">Concesionar</label>
+<div id="rez7"></div><br></br>
+
+<div id="rez8"></div><br></br>
+
+
+
+<script src="validare+cautare.js"></script>
+
 
 
 </form>
