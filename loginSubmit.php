@@ -59,6 +59,7 @@ if (!isset($_POST['userName'], $_POST['password'])) {
 		<li><p><a href="persoane-morminte/contract.html">Mergi la pagina Concesionar</p></li>	
 		<li><p><a href="persoane-morminte/decedati.html">Mergi la pagina Decedati</p></li>
 		<li><p><a href="registre/registre.html">Mergi la pagina Registre</p></li>
+		<li><p><a href="rapoarte/rapoarte.html">Mergi la pagina Rapoarte</p></li>
 	</ul>
 		
 <?php } else { ?>
