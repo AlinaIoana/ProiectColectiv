@@ -8,7 +8,7 @@ table, th, td {
 </style>
 </head>
 <body>
-<a href="morminte_nemonument_FARA_BUTOANE.php">Inapoi</a></li>
+<a href="morminte_monument_FARA_BUTOANE.php">Inapoi</a></li>
 
 
 <?php

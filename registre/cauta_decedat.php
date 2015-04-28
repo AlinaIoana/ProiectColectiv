@@ -2,8 +2,6 @@
 <html>
 
 <head>
-
-
     <title>Cautare decedat</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script type="text/javascript" src="jquery-latest.js"></script> 
@@ -30,12 +28,7 @@
 <div id="Search">
 <p>Cautare Decedat</p>
 
-<ul>
-</ul>
-
-<input id="Cimitirul Central" type="text" style="border:0px" value="A"><br>
-<input id="Cimitirul Manastur" type="text" style="border:0px" value="E"><br>
-
+<input class="input" type="text"><br>
 <br>
 
 <br>
