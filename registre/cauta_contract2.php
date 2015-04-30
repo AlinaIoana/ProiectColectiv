@@ -5,7 +5,11 @@
 </head>
 
 <body>
-<p> <a href="Registru_concesionar.php">Înapoi la registru anual de evidenta a contractelor de concesiune </a></p>
+<ul>
+<li><a href="../loginSubmit.php">Inapoi</a></li>
+<li><a href="../logout.php">Delogare</a></li>
+ <li><a href="Registru_concesionar.php">Înapoi la registru anual de evidenta a contractelor de concesiune </a></li>
+ </ul>
 <?php
 
 $con = mysqli_connect("localhost","root","");
@@ -13,7 +17,7 @@ mysqli_select_db($con, "proiect");
 
 $search = mysqli_real_escape_string($con, trim($_POST['searchterm']));
 
-$cauta ="SELECT concesionar.id_concesionar,nume,prenume,adresa,contract.data_semnare, concesionar.CNP FROM concesionar, contract WHERE contract.data_semnare LIKE '%2015-20%' AND nume LIKE  '$search' OR prenume LIKE  '$search'";
+$cauta ="SELECT concesionar.id_concesionar,nume,prenume,adresa,contract.data_semnare, concesionar.CNP FROM concesionar, contract WHERE concesionar.id_concesionar=contract.id_concesionar and contract.data_semnare LIKE '%1995%' AND nume LIKE  '$search' OR prenume LIKE  '$search'";
 $myData = mysqli_query($con, $cauta);
 echo '<h4>Tabelul dupa nume</h4>' ;
 echo "<table border=3>

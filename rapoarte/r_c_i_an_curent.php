@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Registru anual de evidenta a contractelor de concesiune</title>
+	<title>Rapoarte contracte de concesiune</title>
 	<meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
 	<script type="text/javascript" src="jquery-latest.js"></script> 
     <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
@@ -16,33 +16,18 @@
 	</script>
 </head>
 <body>
-<div class="header"> <h2> Registru anual de evidenta a contractelor de concesiune</h2></div>
+<div class="header"> <h2> Rapoarte contracte de concesiune</h2></div>
 <div class="menu"> 
 <!-- aici vin legaturile cu celelalte pagini -->
 <ul>
 	<li><a href="../loginSubmit.php">Inapoi</a></li>
 	<li><a href="../logout.php">Delogare</a></li>
-	<li><a href="Registru_concesionar.php">Înapoi la registru anual de evidenta a contractelor de concesiune</a></li>
+	<li><a href="Rapoarte_contracte.php">Înapoi la rapoarte contracte de concesiune</a></li>
 </ul>
 <br>
 
 </div>
 <div class="body">
-<form action="cauta_contract.php" method="POST">
-	<p>Cautare dupa nume</p>
-	<input type="text" name="searchterm" placeholder="Căutare după nume"></br>
-	<input type="submit" name="Submit" value="Caută" />
-	</br>
-</form>
-
-<form action="cauta_contract3.php" method="POST">
-	<p>Cautare dupa CNP</p>
-	<input type="text" name="searchterm" placeholder="Căutare după CNP"></br>
-	<input type="submit" name="Submit" value="Caută" />
-	</br>
-</form>
-
-
 <?php
 
 // connect to the server
@@ -55,33 +40,36 @@ mysqli_select_db($con,"proiect");
 
 //query the database
 
-$sql = "SELECT distinct concesionar.id_concesionar,nume,prenume,adresa,contract.data_semnare , concesionar.CNP from concesionar,contract where concesionar.id_concesionar=contract.id_concesionar";
+$sql = "select distinct concesionar.nume, prenume, cnp, mormant.numar,suprafata,cimitir.nume_cimitir, parcela from concesionar, mormant, cimitir, contract where contract.data_semnare LIKE '%2015%' and concesionar.id_concesionar=contract.id_concesionar and contract.id_mormant=mormant.id_mormant and mormant.id_cimitir=cimitir.id_cimitir";
 $myData = mysqli_query($con,$sql);
 // create the table
-echo '<h4>Lista tuturor contractelor de concesiune </h4>' ;
+echo '<h4>Rapoarte despre toate contractelor de concesiune incheiate in anul curent</h4>' ;
 echo "<table border='3' id='table' class='tablesorter'>
 <thead>
 <tr>
-<th>ID</th>
 <th>Nume</th>
-<th>Prenume &nbsp</th>
-<th>Adresa</th>
-<th>Data_semnare</th>
+<th>Prenume</th>
 <th>CNP</th>
+<th>Numar</th>
+<th>Suprafata</th>
+<th>Nume-cimitir</th>
+<th>Parcela</th>
 </tr>
 </thead></tbody>";
 
  while($record = mysqli_fetch_array($myData)){ 
 	echo "<tr>";
-	echo "<td>" . $record['id_concesionar'] . "</td>";
 	echo "<td>" . $record['nume'] . "</td>";
 	echo "<td>" . $record['prenume'] . "</td>";
-	echo "<td>" . $record['adresa'] . "</td>";
-	echo "<td>" . $record['data_semnare'] . "</td>";
-	echo "<td>" . $record['CNP'] . "</td>";
- 	echo "</tr>";
+	echo "<td>" . $record['cnp'] . "</td>";
+	echo "<td>" . $record['numar'] . "</td>";
+	echo "<td>" . $record['suprafata'] . "</td>";
+	echo "<td>" . $record['nume_cimitir'] . "</td>";
+	echo "<td>" . $record['parcela'] . "</td>";
+	echo "</tr>";
 }
 echo "</tbody></table>";
+
 mysqli_close($con);
 
 ?>
