@@ -31,8 +31,9 @@
 <li><div>Cauta decedati dupa an
 	<br><br>
 	Selecteaza un an:
-	<select>
-	<option selected value="2015">2015
+	<form method="post">
+	<select name="year">
+	<option value="2015">2015
 	<option value="2014">2014
 	<option value="2013">2013
 	<option value="2012">2012
@@ -40,10 +41,11 @@
 	<option value="2010">2010
 	<option value="2009">2009
 	<option value="2008">2008
-	</select></div>
+	</select>
+	<input type="submit" name="submit" value="Cauta decedati dupa anul selectat" />
+	</form></div>
 <!--<br><li><a href="toti_decedatii.php">Lista tuturor decedatilor</a></li> -->
-<li><a href="cauta_decedat_registru_anual.php">Cauta un decedat</a></li>
-
+<li><a href="cauta_decedat_registru_anual.php">Cauta un decedat dupa nume</a></li>
 
 </ul>
 <?php
@@ -55,14 +57,23 @@ $con = mysqli_connect("localhost","root","");
 //connect to the database
 
 mysqli_select_db($con, "proiect");
-
+if (isset($_POST['year'])) 
+{
+$selected_year=$_POST['year'];
+}
+else
+{ $selected_year='2015';}
 //query the database
 
-$sql = "SELECT nume, prenume,adresa,religie, data_ora_inmormantare FROM decedat where data_ora_inmormantare LIKE '%2015%' ";
-$myData = mysqli_query($con, $sql);
+//$sql = "SELECT nume, prenume,adresa,religie, data_ora_inmormantare FROM decedat where data_ora_inmormantare LIKE '%2015%' ";
+$sql1 = "SELECT nume, prenume,adresa,religie, data_ora_inmormantare FROM decedat where YEAR(decedat.data_ora_inmormantare)  =  " .$selected_year. " ";
+//$myData = mysqli_query($con, $sql);
+$myData1 = mysqli_query($con, $sql1);
+
 
 // create the table
-echo '<h4>Lista decedatilor din anul 2015</h4>' ;
+if (mysqli_num_rows($myData1) != 0) {
+echo '<h4>Lista decedatilor din anul ' . $selected_year . ' </h4>' ;
 echo "<table border='3' id='table' class='tablesorter'>
 <thead>
 <tr>
@@ -74,7 +85,7 @@ echo "<table border='3' id='table' class='tablesorter'>
 </tr>
 </thead></tbody>";
 
- while($record = mysqli_fetch_array($myData)){ 
+ while($record = mysqli_fetch_array($myData1)){ 
 	echo "<tr>";
 	echo "<td>" . $record['nume'] . "</td>";
 	echo "<td>" . $record['prenume'] . "</td>";
@@ -83,14 +94,15 @@ echo "<table border='3' id='table' class='tablesorter'>
 	echo "<td>" . $record['data_ora_inmormantare'] . "</td>";
 	echo "</tr>";
 }
-echo "</tbody></table>";
+echo "</tbody></table>"; }
+else 
+	{echo "Nu exista inregistrari pentru anul selectat!"; }
 
 // close connection
+
 mysqli_close($con);
 
 ?>
-
-
 
 </div>
 
