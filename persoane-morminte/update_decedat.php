@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include("config.php");
 
@@ -15,6 +16,7 @@ if( isset($_POST['nume'])){
 	$data_ora_inmormantarii = $_POST['data_ora_inmormantarii'];
 	$id_decedat = $_POST['id_decedat'];
 	
+
 	$nume_before = $_POST['nume_before'];
 	$prenume_before = $_POST['prenume_before'];
 	$domiciliu_before = $_POST['adresa_before'];
@@ -67,6 +69,12 @@ if( isset($_POST['nume'])){
 		if($result){
 					echo "Ati modificat datele cu succes!";
 					echo "<li><a href='istoric.php'>Istoricul modificarilor</a></li>";
+
+		$sql = "UPDATE decedat  set nume = '" . $nume . "', prenume = '" . $prenume . "', adresa = '" . $domiciliu. "', religie = '" . $religie. "', data_ora_inmormantare = '" . $data_ora_inmormantarii . "' WHERE decedat_id = '" . $id_decedat . "'";
+		echo $sql;
+		$result = $conn->query($sql);
+		if($result){
+			echo "Adaugarea dcedatului s-a realizat cu succes.";
 		}else{
 			echo "Adaugarea nu a reusit. Reincercati.";
 		}

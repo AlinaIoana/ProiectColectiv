@@ -15,9 +15,13 @@
 $con = mysqli_connect("localhost","root","");
 mysqli_select_db($con, "proiect");
 
+
 if(isset($_POST['searchterm'])){
 $search = mysqli_real_escape_string($con, trim($_POST['searchterm']));
 $search = $search - 20;
+
+$search = mysqli_real_escape_string($con, trim($_POST['searchterm']));
+
 $cauta = "select distinct concesionar.nume, prenume, cnp, mormant.numar,suprafata,cimitir.nume_cimitir, parcela from concesionar, mormant, cimitir, contract where contract.data_semnare LIKE '$search' and concesionar.id_concesionar=contract.id_concesionar and contract.id_mormant=mormant.id_mormant and mormant.id_cimitir=cimitir.id_cimitir";
 $myData = mysqli_query($con, $cauta);
 echo '<h4>Rapoarte despre toate contractelor de concesiune expirate in anul dat</h4>' ;
@@ -46,7 +50,11 @@ echo "<table border='3' id='table' class='tablesorter'>
 	echo "</tr>";
 }
 echo "</tbody></table>";
+<<<<<<< HEAD
 }
+=======
+
+>>>>>>> origin/master
 mysqli_close($con);
 
 ?>
