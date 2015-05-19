@@ -1,12 +1,15 @@
 <!--    Versiunea 1.0 : Nu contine validari de input-uri!    -->
 
 <?php
+session_start();
 include("config.php");
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
 	die("Connection failed: " . mysqli_connect_error());
 }
+
+//echo $_SESSION['userId'];
 ?>
 
 <html>
@@ -50,10 +53,10 @@ if (!$conn) {
 <form method="POST" action="adaugare_decedat.php" name="formular">
 
 <label class="eticheta">Nume</label>
-<input class="input" type="text" name="nume" required></br></br>
+<input class="input" type="text" name="nume" pattern="[A-Za-z]*" title="Numele poate contine doar litere!" required></br></br>
 
 <label class="eticheta">Prenume</label>
-<input class="input" type="text" name="prenume" required></br></br>
+<input class="input" type="text" name="prenume" pattern="[A-Za-z]*" title="Prenumele poate contine doar litere!" required></br></br>
 
 <!-- <label class="eticheta">CNP</label>
 <input class="input" type="number" name="cnp" onchange="" required></br></br> 
@@ -83,17 +86,17 @@ $cimitire = mysqli_query($conn, $sql); ?>
 
 <label class="eticheta">Parcela</label>
 <!-- <input class="input" type="text" name="parcela" required></br></br> -->
-<span id="rez"></span></br></br>
+<span id="rez"></span><br><br>
 
 <label class="eticheta">Numarul mormantului</label>
 <!--<input class="input" type="number" name="numar" required></br></br>-->
-<span id="rez2"></span></br></br>
+<span id="rez2"></span><br><br>
 
 <label class="eticheta">Data inmormantarii</label>
-<input class="input" id="datepicker" type="datetime" name="data" required></br></br>
+<input class="input" id="datepicker" type="datetime" name="data" pattern="[12][0-9]{3}-(01|02|03|04|05|06|07|08|09|10|11|12)-[0123][0-9]" title="Va rugam sa folositi formatul aaaa-ll-zz si sa introduceti o data existenta" required><br><br>
 
 <label class="eticheta">Ora inmormantarii</label>
-<input class="input" id="timepicker" type="text" name="time" required></br></br>
+<input class="input" id="timepicker" type="text" name="time" required><br><br>
 
 
 

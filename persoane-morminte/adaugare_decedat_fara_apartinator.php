@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("config.php");
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -40,7 +41,32 @@ if( mysqli_num_rows($id_cimitir_parcela) != 1){
 		$date_time_inmormantare = $data_inmormantarii . " " . $ora_inmormantarii . ":00";
 		$sql = "INSERT INTO decedat_fara_apartinator ( nume, prenume, nr_adeverinta, nr_solicitare, id_mormant, data_ora_inmormantare ) VALUES ('" . $nume . "','" . $prenume . "', '" . $nr_adeverinta. "', '" . $nr_solicitare. "', '" . $id_mormant->fetch_assoc()['id_mormant'] . "', '" . $date_time_inmormantare . "')";
 		echo $sql;
+		
+		$nume_u = "SELECT nume FROM utilizator WHERE id_utilizator = '" . $_SESSION['userId'] . "'";
+		$nume_u = $conn -> query($nume_u);
+		$nume_u = $nume_u->fetch_assoc()['nume'];
+		$prenume_u = "SELECT prenume FROM utilizator WHERE id_utilizator = '" . $_SESSION['userId']. "'";
+		$prenume_u = $conn -> query($prenume_u);
+		$prenume_u = $prenume_u->fetch_assoc()['prenume'];
+		$nume_utilizator = "SELECT username FROM utilizator WHERE id_utilizator = '" . $_SESSION['userId']. "'";
+		$nume_utilizator = $conn -> query($nume_utilizator);
+		$nume_utilizator = $nume_utilizator->fetch_assoc()['username'];
+		//echo $nume_utilizator->fetch_assoc()['username'];
+		$date_utilizator =  $nume_u . '; '. $prenume_u . '; ' . $nume_utilizator  ;
+
+		$sql1 = "INSERT INTO istoric (nume_prenume_utilizator, tip_modificare, data_modificare, tabelul_modificarii, coloana_modificarii, valoare_dupa) VALUES ('". $date_utilizator . "', 'adaugare', now(), 'decedat', 'nume', '" . $nume. "')";
+		$sql2 = "INSERT INTO istoric (nume_prenume_utilizator, tip_modificare, data_modificare, tabelul_modificarii, coloana_modificarii, valoare_dupa) VALUES ('". $date_utilizator . "', 'adaugare', now(), 'decedat', 'prenume', '" . $prenume. "')";
+		$sql3 = "INSERT INTO istoric (nume_prenume_utilizator, tip_modificare, data_modificare, tabelul_modificarii, coloana_modificarii, valoare_dupa) VALUES ('". $date_utilizator . "', 'adaugare', now(), 'decedat', 'nr_adeverinta', '" . $nr_adeverinta . "')";
+		$sql4 = "INSERT INTO istoric (nume_prenume_utilizator, tip_modificare, data_modificare, tabelul_modificarii, coloana_modificarii, valoare_dupa) VALUES ('". $date_utilizator . "', 'adaugare', now(), 'decedat', 'nr_solicitare', '" . $nr_solicitare. "')";
+		$sql5 = "INSERT INTO istoric (nume_prenume_utilizator, tip_modificare, data_modificare, tabelul_modificarii, coloana_modificarii, valoare_dupa) VALUES ('". $date_utilizator . "', 'adaugare', now(), 'decedat', 'data_ora_inmormantare', '" . $date_time_inmormantare . "')";
+		
 		$result = $conn->query($sql);
+		$conn -> query($sql1);
+		$conn -> query($sql2);
+		$conn -> query($sql3);
+		$conn -> query($sql4);
+		$conn -> query($sql5);
+		
 		if($result){
 			echo "Adaugarea dcedatului s-a realizat cu succes.";
 		}else{

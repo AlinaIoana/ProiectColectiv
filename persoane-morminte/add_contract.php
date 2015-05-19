@@ -48,7 +48,7 @@ $rezult4=mysqli_query($conn,$query4);
 $row=mysqli_fetch_array($rezult4);
 $id_mormant=$row['id_mormant'];
 
-$data=date("Y-m-d");
+$data=date("Y");
 $ok=0;
 $query5="insert into contract values ('$id_concesionar1','$id_mormant','$nr_contract','$nr_chitanta','$cerere','$data')";
 $rezult5=mysqli_query($conn,$query5);
@@ -82,7 +82,18 @@ if($ok==0)
 	echo "Eroare la introducerea contrectului";
 		
 ?>	
+<form action="generare_contract.php" method="post"> 
 
+<input type="hidden" value="<?php echo $cnp1?>" name="cnp1">
+<input type="hidden" value="<?php echo $cnp2?>" name="cnp2">
+<input type="hidden" value="<?php echo $cimitir?>" name="cimitir">
+<input type="hidden" value="<?php echo $parcela?>" name="parcela">
+<input type="hidden" value="<?php echo $nr_mormant?>" name="nr_mormant">
+<input type="hidden" value="<?php echo $nr_contract?>" name="nr_contract">
+<input type="hidden" value="<?php echo $nr_chitanta?>" name="nr_chitanta">
+<input type="hidden" value="<?php echo $cerere?>" name="id_cerere">
+<input type="submit" value="Genereaza contract"></input>
+</form>
 </div>
 </body>
 </html>

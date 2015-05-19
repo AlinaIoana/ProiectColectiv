@@ -47,7 +47,7 @@ mysqli_select_db($con,"proiect");
 
 //query the database
 
-$sql = "SELECT  concesionar.id_concesionar,nume,prenume,adresa,contract.data_semnare,concesionar.CNP from concesionar, contract where concesionar.id_concesionar=contract.id_concesionar and contract.data_semnare LIKE '%2015%'";
+$sql = "SELECT distinct concesionar.id_concesionar,nume,prenume,adresa,contract.data_semnare,concesionar.CNP from concesionar, contract where concesionar.id_concesionar=contract.id_concesionar and contract.data_semnare LIKE '%2015%'";
 $myData = mysqli_query($con,$sql);
 // create the table
 echo '<h4>Lista tuturor contractelor de concesiune din anul curent</h4>' ;
